@@ -15,7 +15,8 @@ module.exports = function (socket) {
         {position: 'bl', status: false, disabled: false},
         {position: 'bm', status: false, disabled: false},
         {position: 'br', status: false, disabled: false}
-      ]
+      ],
+      players: []
     });
   });
 

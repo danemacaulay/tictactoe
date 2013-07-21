@@ -9,12 +9,9 @@ angular.module('myApp.controllers', []).
     });
     $scope.onlyOne = function(activeTictac) {
       angular.forEach($scope.tictacs, function(tictac){
-        // if checking box make all disabled, otherwise make them all enabled except for those already active
-        if(activeTictac.status){
-          tictac.disabled = true;
-        }else{
-          tictac.disabled = false;
-        }
+        // set all disabled if we're checking the checkbox
+        tictac.disabled = activeTictac.status;
+        // respect those who are already set
         if(tictac.status){
           tictac.disabled = true;
         }
