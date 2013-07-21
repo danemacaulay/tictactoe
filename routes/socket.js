@@ -19,7 +19,11 @@ module.exports = function (socket) {
       players: []
     });
   });
-
+  socket.on('player:create', function (user) {
+    socket.set('user', user, function () {
+      socket.emit('server:createdUser');
+    });
+  });
   socket.on('player:turn', function (data) {
     socket.broadcast.emit('server:turn', {
       tictacs: data

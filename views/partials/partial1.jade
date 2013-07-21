@@ -1,3 +1,7 @@
+p Hello {{user}}
+form(ng-submit="createUser()")
+  input(type="text", ng-model="user")
+  input(class="btn-primary", type="submit", value="Create User")
 div(class="tic-tac-to")
   span(ng-repeat="tictac in tictacs")
     input(type="checkbox", ng-model="tictac.status", ng-click="onlyOne(tictac)", ng-disabled="tictac.disabled")

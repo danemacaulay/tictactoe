@@ -2,7 +2,9 @@
 
 angular.module('myApp.controllers', []).
   controller('MyCtrl1', function ($scope, socket) {
-    socket.emit('player:join');
+    socket.on('server:createdUser', function () {
+      socket.emit('player:join');
+    });
     socket.on('server:turn', function (data) {
       $scope.newtictacs = data.tictacs;
       $scope.tictacs = angular.copy($scope.newtictacs);
@@ -21,10 +23,14 @@ angular.module('myApp.controllers', []).
     $scope.isUnchanged = function() {
       return angular.equals($scope.newtictacs, $scope.tictacs);
     };
+    $scope.createUser = function(){
+      socket.emit('player:create', $scope.user);
+    };
     $scope.processTurn = function() {
       angular.forEach($scope.tictacs, function(tictac){
         tictac.disabled = tictac.status;
       });
+      $scope.myTurn = false;
       socket.emit('player:turn', $scope.tictacs);
     };
   });
