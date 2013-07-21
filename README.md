@@ -2,6 +2,7 @@
 
 ## What is it
 An angular app with an express server utilizing socket.io to communicate board play
+
 Built from https://github.com/btford/angular-socket-io-seed
 
 ## How to install
@@ -15,4 +16,4 @@ npm install
 node app.js
 ```
 ### Browse to
-<a href="http://127.0.0.1:3000/">http://127.0.0.1:3000/</a>
+http://127.0.0.1:3000/
