@@ -18,7 +18,15 @@ angular.module('myApp.controllers', []).
           tictac.disabled = true;
         }
       });
+      activeTictac.owner = $scope.toggleOwner(activeTictac.owner);
       activeTictac.disabled = false;
+    };
+    $scope.toggleOwner = function(owner){
+      if(owner === null){
+        return $scope.user;
+      }else if(owner == $scope.user){
+        return null;
+      }
     };
     $scope.isUnchanged = function() {
       return angular.equals($scope.newtictacs, $scope.tictacs);

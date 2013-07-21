@@ -7,4 +7,7 @@ div(class="tic-tac-to")
     input(type="checkbox", ng-model="tictac.status", ng-click="onlyOne(tictac)", ng-disabled="tictac.disabled")
   form(ng-submit="processTurn()")
     input(class="btn-primary", type="submit", value="Submit", ng-disabled="isUnchanged()")
+div(class="users")
+  span(ng-repeat="user in users")
+    {user}
 
