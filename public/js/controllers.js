@@ -1,39 +1,34 @@
 /* Controllers */
 
 angular.module('myApp.controllers', []).
-  controller('AppCtrl', function ($scope, socket) {
-    socket.on('send:name', function (data) {
-      $scope.name = data.name;
-    });
-  }).
   controller('MyCtrl1', function ($scope, socket) {
-    $scope.tictacs = [
-      {position: 'tl', status: 0},
-      {position: 'tm', status: 0},
-      {position: 'tr', status: 0},
-      {position: 'cl', status: 0},
-      {position: 'cm', status: 0},
-      {position: 'cr', status: 0},
-      {position: 'bl', status: 0},
-      {position: 'bm', status: 0},
-      {position: 'br', status: 0}
-    ];
-    $scope.isUnchanged = function(tictacs) {
-      console.log(tictacs);
-      console.log($scope.tictacs);
-      return angular.equals(tictacs, $scope.tictacs);
+    socket.emit('player:join');
+    socket.on('server:turn', function (data) {
+      $scope.newtictacs = data.tictacs;
+      $scope.tictacs = angular.copy($scope.newtictacs);
+    });
+    $scope.onlyOne = function(activeTictac) {
+      angular.forEach($scope.tictacs, function(tictac){
+        // if checking box make all disabled, otherwise make them all enabled except for those already active
+        if(activeTictac.status){
+          tictac.disabled = true;
+        }else{
+          tictac.disabled = false;
+        }
+        if(tictac.status){
+          tictac.disabled = true;
+        }
+      });
+      activeTictac.disabled = false;
+    };
+    $scope.isUnchanged = function() {
+      return angular.equals($scope.newtictacs, $scope.tictacs);
     };
     $scope.processTurn = function() {
-      console.log($scope);
-      // socket.emit('send:name', {
-      //   name: 'Bob'
-      // });
+      angular.forEach($scope.tictacs, function(tictac){
+        tictac.disabled = tictac.status;
+      });
+      socket.emit('player:turn', $scope.tictacs);
     };
-    socket.on('send:time', function (data) {
-      $scope.time = data.time;
-
-    });
-  }).
-  controller('MyCtrl2', function ($scope) {
-    // write Ctrl here
   });
+

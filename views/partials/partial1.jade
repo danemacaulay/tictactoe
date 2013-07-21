@@ -1,6 +1,6 @@
 div(class="tic-tac-to")
   span(ng-repeat="tictac in tictacs")
-    input(type="checkbox", ng-model="tictac.status")
+    input(type="checkbox", ng-model="tictac.status", ng-click="onlyOne(tictac)", ng-disabled="tictac.disabled")
   form(ng-submit="processTurn()")
-    input(class="btn-primary", type="submit", value="Submit", ng-disabled="isUnchanged(tictacs)")
+    input(class="btn-primary", type="submit", value="Submit", ng-disabled="isUnchanged()")
 
