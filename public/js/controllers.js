@@ -12,9 +12,9 @@ angular.module('myApp.controllers', []).
     $scope.onlyOne = function(activeTictac) {
       angular.forEach($scope.tictacs, function(tictac){
         // set all disabled if we're checking the checkbox
-        tictac.disabled = activeTictac.status;
+        tictac.disabled = activeTictac.checked;
         // respect those who are already set
-        if(tictac.status){
+        if(tictac.checked){
           tictac.disabled = true;
         }
       });
@@ -36,7 +36,7 @@ angular.module('myApp.controllers', []).
     };
     $scope.processTurn = function() {
       angular.forEach($scope.tictacs, function(tictac){
-        tictac.disabled = tictac.status;
+        tictac.disabled = tictac.checked;
       });
       $scope.myTurn = false;
       socket.emit('player:turn', $scope.tictacs);

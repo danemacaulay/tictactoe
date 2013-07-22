@@ -21,15 +21,15 @@ module.exports = function (socket) {
   });
   var newGame = {
     tictacs : [
-      {position: 'tl', status: false, disabled: false, x:1, y: 1, magic: 8, owner: null},
-      {position: 'tm', status: false, disabled: false, x:2, y: 1, magic: 1, owner: null},
-      {position: 'tr', status: false, disabled: false, x:3, y: 1, magic: 6, owner: null},
-      {position: 'cl', status: false, disabled: false, x:1, y: 2, magic: 3, owner: null},
-      {position: 'cm', status: false, disabled: false, x:2, y: 2, magic: 5, owner: null},
-      {position: 'cr', status: false, disabled: false, x:3, y: 2, magic: 7, owner: null},
-      {position: 'bl', status: false, disabled: false, x:1, y: 3, magic: 4, owner: null},
-      {position: 'bm', status: false, disabled: false, x:2, y: 3, magic: 9, owner: null},
-      {position: 'br', status: false, disabled: false, x:3, y: 3, magic: 2, owner: null}
+      {position: 'tl', checked: false, disabled: false, x:1, y: 1, magic: 8, owner: null},
+      {position: 'tm', checked: false, disabled: false, x:2, y: 1, magic: 1, owner: null},
+      {position: 'tr', checked: false, disabled: false, x:3, y: 1, magic: 6, owner: null},
+      {position: 'cl', checked: false, disabled: false, x:1, y: 2, magic: 3, owner: null},
+      {position: 'cm', checked: false, disabled: false, x:2, y: 2, magic: 5, owner: null},
+      {position: 'cr', checked: false, disabled: false, x:3, y: 2, magic: 7, owner: null},
+      {position: 'bl', checked: false, disabled: false, x:1, y: 3, magic: 4, owner: null},
+      {position: 'bm', checked: false, disabled: false, x:2, y: 3, magic: 9, owner: null},
+      {position: 'br', checked: false, disabled: false, x:3, y: 3, magic: 2, owner: null}
     ],
     players: [],
     winner: null
@@ -37,7 +37,7 @@ module.exports = function (socket) {
   var isWinner = function(gameData){
     _.each(gameData.players, function(player){
       // gather up players rows
-      rows = getPlayersRows(gameData, player);
+      var rows = getPlayersRows(gameData, player);
       // set the winner if we have one
       _.each(rows, function(row){
         gameData.winner = magicNumbers(row) ? player : null;

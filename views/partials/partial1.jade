@@ -1,10 +1,11 @@
 p Hello {{user}}
 form(ng-submit="createUser()")
   input(type="text", ng-model="user")
+  a(href="", class="btn", colorpicker) Pick a color!
   input(class="btn-primary", type="submit", value="Create User")
 div(class="tic-tac-to")
   span(ng-repeat="tictac in tictacs")
-    input(type="checkbox", ng-model="tictac.status", ng-click="onlyOne(tictac)", ng-disabled="tictac.disabled")
+    input(type="checkbox", ng-model="tictac.checked", ng-click="onlyOne(tictac)", ng-disabled="tictac.disabled")
   form(ng-submit="processTurn()")
     input(class="btn-primary", type="submit", value="Submit", ng-disabled="isUnchanged()")
 div(class="users")
