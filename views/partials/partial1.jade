@@ -3,7 +3,7 @@ form(ng-submit="createUser()")
   input(type="text", ng-model="user")
   a(href="", class="btn", colorpicker) Pick a color!
   input(class="btn-primary", type="submit", value="Create User")
-div(class="tic-tac-to")
+div(class="tic-tac-to", ng-class="color")
   span(ng-repeat="tictac in tictacs")
     input(type="checkbox", ng-model="tictac.checked", ng-click="onlyOne(tictac)", ng-disabled="tictac.disabled")
   form(ng-submit="processTurn()")

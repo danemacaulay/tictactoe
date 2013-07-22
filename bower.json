@@ -9,7 +9,9 @@
   "dependencies": {
     "angular": "~1.0.7",
     "angular-socket-io": "~0.0.2",
-    "underscore": "~1.5.1",
+    "angular-bootstrap": "~0.4.0",
     "angular-bootstrap-colorpicker": "~1.0.0",
+    "underscore": "~1.5.1",
+    "angular-underscore": "latest"
   }
 }

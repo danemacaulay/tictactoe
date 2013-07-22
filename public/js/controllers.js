@@ -9,6 +9,7 @@ angular.module('myApp.controllers', []).
       $scope.newtictacs = data.tictacs;
       $scope.tictacs = angular.copy($scope.newtictacs);
     });
+    $scope.color = "red";
     $scope.onlyOne = function(activeTictac) {
       angular.forEach($scope.tictacs, function(tictac){
         // set all disabled if we're checking the checkbox

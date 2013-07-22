@@ -21,15 +21,15 @@ module.exports = function (socket) {
   });
   var newGame = {
     tictacs : [
-      {position: 'tl', checked: false, disabled: false, x:1, y: 1, magic: 8, owner: null},
-      {position: 'tm', checked: false, disabled: false, x:2, y: 1, magic: 1, owner: null},
-      {position: 'tr', checked: false, disabled: false, x:3, y: 1, magic: 6, owner: null},
-      {position: 'cl', checked: false, disabled: false, x:1, y: 2, magic: 3, owner: null},
-      {position: 'cm', checked: false, disabled: false, x:2, y: 2, magic: 5, owner: null},
-      {position: 'cr', checked: false, disabled: false, x:3, y: 2, magic: 7, owner: null},
-      {position: 'bl', checked: false, disabled: false, x:1, y: 3, magic: 4, owner: null},
-      {position: 'bm', checked: false, disabled: false, x:2, y: 3, magic: 9, owner: null},
-      {position: 'br', checked: false, disabled: false, x:3, y: 3, magic: 2, owner: null}
+      {x:1, y: 1, checked: false, disabled: false, magic: 8, owner: null},
+      {x:2, y: 1, checked: false, disabled: false, magic: 1, owner: null},
+      {x:3, y: 1, checked: false, disabled: false, magic: 6, owner: null},
+      {x:1, y: 2, checked: false, disabled: false, magic: 3, owner: null},
+      {x:2, y: 2, checked: false, disabled: false, magic: 5, owner: null},
+      {x:3, y: 2, checked: false, disabled: false, magic: 7, owner: null},
+      {x:1, y: 3, checked: false, disabled: false, magic: 4, owner: null},
+      {x:2, y: 3, checked: false, disabled: false, magic: 9, owner: null},
+      {x:3, y: 3, checked: false, disabled: false, magic: 2, owner: null}
     ],
     players: [],
     winner: null
